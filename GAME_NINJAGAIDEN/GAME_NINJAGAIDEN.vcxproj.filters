@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="FrameWork">
+      <UniqueIdentifier>{4d42a03e-4103-47a7-8bff-a3db2e7ee265}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Debug">
+      <UniqueIdentifier>{4af1d36f-5a1d-4576-b32f-dda86d63b071}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Define">
+      <UniqueIdentifier>{17aeeb08-4f7f-440f-8e95-56c0883ce9dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\MainManager">
+      <UniqueIdentifier>{dc15bb97-d753-47fd-b8ad-e08f1c996d8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Textures">
+      <UniqueIdentifier>{25673319-9f9b-4cce-be44-0bfa4da30f58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Sprites">
+      <UniqueIdentifier>{3c8ae7e5-5b61-4473-b0a1-74ffc613cc89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Camera">
+      <UniqueIdentifier>{4d147edf-d3ec-4cb5-a809-45f40c3cdfc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Map">
+      <UniqueIdentifier>{16a5d98b-7db2-4737-9c6e-60c30f549a2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Scenes">
+      <UniqueIdentifier>{ccc0d36f-d442-4e50-a308-f9b076f44b6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\GameTime">
+      <UniqueIdentifier>{557dda0a-9c47-48c3-a732-e12d6d570886}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{790811a2-e11c-4d41-b23c-73bfb1ecff93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject">
+      <UniqueIdentifier>{befea491-9364-40c0-917d-bb2fff8a52b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aladdin">
+      <UniqueIdentifier>{b7359b5c-dd19-4f05-99a0-b622d6f5eae5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Grid">
+      <UniqueIdentifier>{33926b57-65f1-4a03-99b1-f8e4dab54205}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Enemy">
+      <UniqueIdentifier>{4f3a9826-98f9-4b44-87cd-84c4dc819ca5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="debug.cpp">
+      <Filter>FrameWork\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Define.cpp">
+      <Filter>FrameWork\Define</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>FrameWork\MainManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>FrameWork\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>FrameWork\Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>FrameWork\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>FrameWork\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>FrameWork\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>FrameWork\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>FrameWork\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGame.cpp">
+      <Filter>FrameWork\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTime.cpp">
+      <Filter>FrameWork\GameTime</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamemain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>FrameWork\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>GameObject\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Bird.cpp">
+      <Filter>GameObject\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Aladdin.cpp">
+      <Filter>Aladdin</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="debug.h">
+      <Filter>FrameWork\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>FrameWork\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>FrameWork\MainManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>FrameWork\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>FrameWork\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>FrameWork\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>FrameWork\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>FrameWork\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>FrameWork\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>FrameWork\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGame.h">
+      <Filter>FrameWork\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTime.h">
+      <Filter>FrameWork\GameTime</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>FrameWork\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>GameObject\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Bird.h">
+      <Filter>GameObject\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Aladdin.h">
+      <Filter>Aladdin</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
