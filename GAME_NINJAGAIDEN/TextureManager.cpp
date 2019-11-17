@@ -28,12 +28,15 @@ void TextureManager::LoadResource()
 
 
 	//map
-	AddTexture(eType::MAP1, new CTexture("Resources/map/TileMap.png", 69, 35, 2411));
+	AddTexture(eType::MAP1, new CTexture("Resources/map/TileMap.png", 69, 35, 2415));
 
 
 	//enemy
 	AddTexture(eType::BIRD, new CTexture("Resources/enemy/bird.png", 2, 1, 2));
 
+	//coin
+	AddTexture(eType::COIN, new CTexture("Resources/enemy/coin.png", 2, 1, 2));
+	
 }
 
 TextureManager::TextureManager()

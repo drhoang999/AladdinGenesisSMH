@@ -1,6 +1,7 @@
 ﻿#include "Grid.h"
 #include "define.h"
 #include "Bird.h"
+#include "Coin.h"
 #include "Camera.h"
 Unit::Unit(Grid * grid, LPGAMEOBJECT obj, float x, float y)
 {
@@ -74,6 +75,8 @@ GameObject * Grid::GetNewObject(int id, int direction, int type, float x, float 
 	{
 	case eType::BIRD:
 		return new Bird(direction,x, y, st);	
+	case eType::COIN:
+		return new Coin(direction, x, y, st);
 	}
 	return NULL;
 }
@@ -87,7 +90,7 @@ void Grid::GetListObject(vector<Unit*>& listUnit, Camera * camera)
 	for (int i = 0; i < numRow; i++)
 		for (int j = start_col; j < end_col; j++)
 		{
-			Unit * unit = cells[i][j];
+			Unit * unit = cells[i][j];//lấy Unit của cell hiện tại 
 
 			while (unit != NULL)
 			{

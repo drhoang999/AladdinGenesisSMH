@@ -1,6 +1,8 @@
 ﻿#include "SceneGame.h"
 #include <stdlib.h>
 #include <ctime>
+#include "Coin.h"
+
 SceneGame::SceneGame()
 {
 	LoadResources();
@@ -61,6 +63,11 @@ void SceneGame::KeyState(BYTE * state)
 			aladdin->Stop();														
 		}
 
+	}if (Game::GetInstance()->IsKeyDown(DIK_SPACE))
+	{
+		
+			aladdin->Jump();
+		
 	}
 	
 		
@@ -95,6 +102,7 @@ void SceneGame::LoadResources()
 	aladdin = new Aladdin(camera);
 	grid = new Grid(2272, 1120);
 
+
 	InitGame();
 }
 
@@ -126,6 +134,7 @@ void SceneGame::ResetResource()
 
 void SceneGame::Update(DWORD dt)
 {
+	
 	if (isGameOver)
 		return;
 
@@ -140,12 +149,14 @@ void SceneGame::Update(DWORD dt)
 		listObj.push_back(obj);		
 	}
 	
-	
+
 	aladdin->Update(dt, &listObj);
 	
 	
 	if (camera->AllowFollowAladdin())
-		camera->SetPosition(aladdin->GetX() - SCREEN_WIDTH / 2 - 50, camera->GetYCam() +100); // gắn tọa độ nhân vật vào camera.
+	 	camera->SetPosition(aladdin->GetX() - SCREEN_WIDTH / 2 , aladdin->GetY()-SCREEN_HEIGHT/2); // gắn tọa độ nhân vật vào camera
+	
+
 	camera->Update(dt);
 
 	gameTime->Update(dt);
@@ -158,12 +169,22 @@ void SceneGame::Update(DWORD dt)
 
 	for (UINT i = 0; i < listObj.size(); i++)
 	{
+
+		
 		LPGAMEOBJECT obj = listObj[i];
 		if (dynamic_cast<Bird*>(listObj[i]))
 		{
-			Bird *bird = dynamic_cast<Bird*>(listObj[i]);
+			Bird* bird = dynamic_cast<Bird*>(listObj[i]);
 			bird->Update(dt, aladdin->GetX(), aladdin->GetY(), aladdin->GetDirection(), &listObj);
-		}		
+		
+		
+		}
+		else if (dynamic_cast<Coin*>(listObj[i])) {
+			DebugOut(L"coin");
+			Coin* coin = dynamic_cast<Coin*>(listObj[i]);
+			coin->Update(dt, aladdin->GetX(), aladdin->GetY(), aladdin->GetDirection(), &listObj);
+
+		}
 		else
 			obj->Update(dt, &listObj);
 	}
@@ -201,6 +222,7 @@ void SceneGame::UpdateGrid()
 }
 void SceneGame::Render()
 {
+
 	if (!isGameOver)
 	{
 		TileMap->DrawMap(camera, 255, 255, 255);

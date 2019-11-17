@@ -18,7 +18,7 @@ private:
 
 	int HeightBoard; // chiều cao board
 
-	int TileMap[500][500];
+	int TileMap[4000][4000];
 
 public:
 	Map();

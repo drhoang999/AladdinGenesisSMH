@@ -18,6 +18,8 @@
 
 #define ALADDIN_WALKING_SPEED 0.15f //0.2f 
 
+#define ALADDIN_JUMP_SPEED 0.05f //0.2f 
+
 #define ALADDIN_STATE_IDLE 1
 #define ALADDIN_STATE_WALKING 1
 
@@ -42,6 +44,8 @@ public:
 	bool isHurting;
 	bool isWalking;
 	bool isFall;
+	bool isJumping;
+	bool isJumDown;
 	
 
 	
@@ -53,10 +57,13 @@ public:
 	virtual void GetBoundingBoxBrick(float &left, float &top, float &right, float &bottom);
 	void Go(float Vx = ALADDIN_WALKING_SPEED);
 	void Stop();
+	void Jump();
+	void JumpDown();
 	void ResetSit();
 	void Right();
 	void Left();
 	void SetHurt(int t);
+	void SetJump();
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects = NULL);
 	virtual void Render(Camera * camera);
 

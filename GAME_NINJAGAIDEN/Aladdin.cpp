@@ -12,6 +12,7 @@ Aladdin::Aladdin(Camera * camera)
 
 Aladdin::~Aladdin()
 {
+
 }
 
 void Aladdin::GetBoundingBox(float & left, float & top, float & right, float & bottom)
@@ -35,10 +36,57 @@ void Aladdin::GetBoundingBox(float & left, float & top, float & right, float & b
 
 void Aladdin::Go(float Vx)
 {
-	vx = Vx * direction;
-	isWalking = 1;
-	isHurting = 0;
-	SetPosition(x + direction * 5, y);
+	
+		vx = Vx * direction;
+		isWalking = 1;
+		isHurting = 0;
+		SetPosition(x + direction * 5, y);
+	
+}
+
+void Aladdin::Jump()
+{
+	if (!isJumping) {
+		backupY = y;
+		isJumDown = false;
+		isHurting = 1;
+		isJumping = 1;
+
+	}
+	
+
+}
+
+void Aladdin::JumpDown()
+{
+	
+	DebugOut(L"\nAladin backup y = %f\n", backupY); //1020 khi nhay
+	DebugOut(L"\nAladin y = %f\n", y); //920 khi nhay
+
+
+
+	if (isJumping) {
+		if (y != 0 && backupY - y > 90) {
+			isJumDown = true;
+		}
+		if (y != 0 && backupY < y) {
+		
+			isJumping = false;
+			SetPosition(x, 1020);
+		}
+
+		if (isJumDown) {
+			SetPosition(x, y + 5);
+			
+		}
+		else {
+			
+			SetPosition(x, y - 5);
+		}
+	}
+	
+	
+	vy = ALADDIN_JUMP_SPEED * direction;
 }
 
 void Aladdin::Stop()
@@ -82,6 +130,10 @@ void Aladdin::SetHurt(int t)
 	
 }
 
+void Aladdin::SetJump()
+{
+}
+
 void Aladdin::GetBoundingBoxBrick(float & left, float & top, float & right, float & bottom)
 {
 	if (direction == 1)
@@ -106,14 +158,22 @@ void Aladdin::GetBoundingBoxBrick(float & left, float & top, float & right, floa
 
 void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-	
-	if (x < camera->GetBoundaryLeft() - 16)
+
+	if (x < camera->GetBoundaryLeft() - 16) {
 		x = camera->GetBoundaryLeft() - 16;
+	
+
+	}
 	if (x + ALADDIN_BBOX_WIDTH > camera->GetBoundaryRight() + SCREEN_WIDTH)
 		x = (float)(camera->GetBoundaryRight() + SCREEN_WIDTH - ALADDIN_BBOX_WIDTH);
 	/* Không cho lọt khỏi camera */
+
+
 	int index = sprite->GetCurrentFrame();
 
+	JumpDown();
+		
+	
 	if (isWalking == true) // đang di chuyển
 	{
 		if (index < ALADDIN_ANI_WALKING_BEGIN || index >= ALADDIN_ANI_WALKING_END)
@@ -128,6 +188,8 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		sprite->SelectFrame(ALADDIN_ANI_IDLE);
 
 	}
+
+
 	if (isHurting)
 	{
 		sprite->SelectFrame(ALADDIN_ANI_HURTING);

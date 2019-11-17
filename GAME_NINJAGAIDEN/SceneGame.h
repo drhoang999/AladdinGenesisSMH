@@ -11,6 +11,7 @@
 #include "GameTime.h"
 #include "Grid.h"
 #include "Bird.h"
+#include "Coin.h"
 
 #define GAME_TIME_MAX 150
 
@@ -27,17 +28,13 @@ private:
 	
 	Map * TileMap;
 	Camera *camera;
-	/*Ninja * ninja;*/
 	Aladdin * aladdin;
-	
-	
+
 	vector<LPGAMEOBJECT> listObj;
 	vector<Unit*> listUnit;
 	Grid *grid;
 	
-	
 
-	
 	
 	GameTime * gameTime;
 	int StateCurrent;

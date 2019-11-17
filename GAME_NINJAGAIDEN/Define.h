@@ -63,6 +63,10 @@ enum eType
 	ALADDIN = 1,
 	//enemy
 	BIRD = 10,
+
+
+	//enemy
+	COIN = 11,
 	
 	//map
 	MAP1 = 100,

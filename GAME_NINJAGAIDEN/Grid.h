@@ -19,7 +19,7 @@ private:
 	LPGAMEOBJECT obj;
 	float x;
 	float y;
-	Unit *prev;
+	Unit *prev; 
 	Unit *next;
 
 public:
@@ -40,7 +40,7 @@ private:
 	int numCol; //số cột
 	int numRow; //số hàng
 
-	vector<vector<Unit*>> cells; //mảng 2 chiều để quản lý cấc cells
+	vector<vector<Unit*>> cells; //mảng 2 chiều kiểu Unit 
 	char * filepath; //file txt để đọc các đọc các object
 
 public:
