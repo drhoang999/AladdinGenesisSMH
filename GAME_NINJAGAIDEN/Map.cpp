@@ -20,7 +20,7 @@ void Map::LoadMap(eType type)
 	case eType::MAP1:
 		ReadMapTXT("Resources/map/Background_map_1.txt");
 		break;
-	
+		
 	}
 	texture = TextureManager::GetInstance()->GetTexture(type);
 	sprite = new CSprite(texture, 100);

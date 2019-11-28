@@ -68,7 +68,7 @@ public:
 	virtual void Render(Camera * camera);
 
 	void CollisionWithEnemy(const vector<LPGAMEOBJECT> *coObjects = NULL);
-	void Init(); // khởi tạo lại các trạng thái
+	void Init(); // khởi tạo các trạng thái
 	void Reset(); // khởi tạo lại các trạng thái.
 	bool CheckAABBActiveArea(float l, float t, float r, float b);
 	void StartUntouchable();
