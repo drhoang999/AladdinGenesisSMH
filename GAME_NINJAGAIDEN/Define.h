@@ -64,10 +64,15 @@ enum eType
 	//enemy
 	BIRD = 10,
 
-
 	//enemy
 	COIN = 11,
+
+	//Fat guard
+	FAT_GUARD = 12,
 	
+	//Sharp trap
+	SHARP_TRAP = 13,
+
 	//map
 	MAP1 = 100,
 	//others

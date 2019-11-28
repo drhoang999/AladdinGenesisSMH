@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <ctime>
 #include "Coin.h"
+#include "FatGuard.h"
+#include "SharpTrap.h"
 
 SceneGame::SceneGame()
 {
@@ -180,8 +182,17 @@ void SceneGame::Update(DWORD dt)
 		
 		}
 		else if (dynamic_cast<Coin*>(listObj[i])) {
-			DebugOut(L"coin");
 			Coin* coin = dynamic_cast<Coin*>(listObj[i]);
+			coin->Update(dt, aladdin->GetX(), aladdin->GetY(), aladdin->GetDirection(), &listObj);
+
+		}
+		else if (dynamic_cast<FatGuard*>(listObj[i])) {
+			FatGuard* coin = dynamic_cast<FatGuard*>(listObj[i]);
+			coin->Update(dt, aladdin->GetX(), aladdin->GetY(), aladdin->GetDirection(), &listObj);
+
+		}
+		else if (dynamic_cast<SharpTrap*>(listObj[i])) {
+			SharpTrap* coin = dynamic_cast<SharpTrap*>(listObj[i]);
 			coin->Update(dt, aladdin->GetX(), aladdin->GetY(), aladdin->GetDirection(), &listObj);
 
 		}

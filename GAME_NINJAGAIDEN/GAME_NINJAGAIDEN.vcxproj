@@ -26,6 +26,7 @@
     <ClInclude Include="debug.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="FatGuard.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameTime.h" />
@@ -34,6 +35,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneGame.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SharpTrap.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureManager.h" />
@@ -46,6 +48,7 @@
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Define.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="FatGuard.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Gamemain.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -55,6 +58,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneGame.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SharpTrap.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureManager.cpp" />

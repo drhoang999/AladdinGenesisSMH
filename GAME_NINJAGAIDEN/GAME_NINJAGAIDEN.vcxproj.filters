@@ -46,7 +46,7 @@
     <Filter Include="GameObject\Enemy">
       <UniqueIdentifier>{4f3a9826-98f9-4b44-87cd-84c4dc819ca5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObject\Score">
+    <Filter Include="GameObject\Enemy\Score">
       <UniqueIdentifier>{6bf4b913-29dc-4d8a-a7e0-361bdbd1f3d9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -106,7 +106,13 @@
       <Filter>Aladdin</Filter>
     </ClCompile>
     <ClCompile Include="Coin.cpp">
-      <Filter>GameObject\Score</Filter>
+      <Filter>GameObject\Enemy\Score</Filter>
+    </ClCompile>
+    <ClCompile Include="FatGuard.cpp">
+      <Filter>GameObject\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="SharpTrap.cpp">
+      <Filter>GameObject\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -162,7 +168,13 @@
       <Filter>Aladdin</Filter>
     </ClInclude>
     <ClInclude Include="Coin.h">
-      <Filter>GameObject\Score</Filter>
+      <Filter>GameObject\Enemy\Score</Filter>
+    </ClInclude>
+    <ClInclude Include="FatGuard.h">
+      <Filter>GameObject\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="SharpTrap.h">
+      <Filter>GameObject\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

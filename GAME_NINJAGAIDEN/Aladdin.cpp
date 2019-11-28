@@ -60,9 +60,6 @@ void Aladdin::Jump()
 void Aladdin::JumpDown()
 {
 	
-	DebugOut(L"\nAladin backup y = %f\n", backupY); //1020 khi nhay
-	DebugOut(L"\nAladin y = %f\n", y); //920 khi nhay
-
 
 
 	if (isJumping) {

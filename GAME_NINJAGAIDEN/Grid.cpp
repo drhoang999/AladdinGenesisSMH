@@ -3,6 +3,8 @@
 #include "Bird.h"
 #include "Coin.h"
 #include "Camera.h"
+#include "FatGuard.h"
+#include "SharpTrap.h"
 Unit::Unit(Grid * grid, LPGAMEOBJECT obj, float x, float y)
 {
 	this->grid = grid;
@@ -77,6 +79,10 @@ GameObject * Grid::GetNewObject(int id, int direction, int type, float x, float 
 		return new Bird(direction,x, y, st);	
 	case eType::COIN:
 		return new Coin(direction, x, y, st);
+	case eType::FAT_GUARD:
+		return new FatGuard(direction, x, y, st);
+	case eType::SHARP_TRAP:
+		return new SharpTrap(direction, x, y, st);
 	}
 	return NULL;
 }
