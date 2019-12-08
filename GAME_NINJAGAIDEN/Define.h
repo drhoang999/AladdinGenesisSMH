@@ -24,8 +24,8 @@ using namespace std;
 #define COLOR_BLACK D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f)  
 #define COLOR_KEY D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.0f) 
 
-#define SCREEN_WIDTH 576
-#define SCREEN_HEIGHT 480
+#define SCREEN_WIDTH 340
+#define SCREEN_HEIGHT 250
 
 #define IS_DEBUG_RENDER_BBOX isDebug_RenderBBox
 
@@ -61,17 +61,15 @@ enum eType
 {
 
 	ALADDIN = 1,
-	//enemy
+	ALADDIN_CUT = 2,
 	BIRD = 10,
-
-	//enemy
 	COIN = 11,
-
-	//Fat guard
 	FAT_GUARD = 12,
-	
-	//Sharp trap
 	SHARP_TRAP = 13,
+	FLOOR = 14,
+	ROCK = 15,
+	PENDULUM = 16,
+	BAT = 17,
 
 	//map
 	MAP1 = 100,

@@ -13,10 +13,13 @@ RECT CSprite::GetRectFrame(int idFrame)
 CSprite::CSprite(CTexture* Texture, DWORD TimeAnimation)
 {
 	texture = Texture;
+	
 	currentFrame = 0;
 	totalFrames = texture->TotalFrames - 1;
 	this->timeAnimation = TimeAnimation;
 	spriteHandler = Game::GetInstance()->GetSpriteHandler();
+
+
 }
 
 CSprite::~CSprite()

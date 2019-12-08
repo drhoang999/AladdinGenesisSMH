@@ -4,6 +4,10 @@
 #include "Coin.h"
 #include "FatGuard.h"
 #include "SharpTrap.h"
+#include "Floor.h"
+#include "Rock.h"
+#include "Pendulum.h"
+#include "Bat.h"
 
 SceneGame::SceneGame()
 {
@@ -21,7 +25,13 @@ void SceneGame::KeyState(BYTE * state)
 {
 
 
+	if (Game::GetInstance()->IsKeyDown(DIK_Z))
+	{
 
+		aladdin->Cut();
+
+	}
+	else 
 	if (Game::GetInstance()->IsKeyDown(DIK_RIGHT))
 	{
 		if (aladdin->GetDirection() == 1)
@@ -65,7 +75,9 @@ void SceneGame::KeyState(BYTE * state)
 			aladdin->Stop();														
 		}
 
-	}if (Game::GetInstance()->IsKeyDown(DIK_SPACE))
+	}
+	
+	if (Game::GetInstance()->IsKeyDown(DIK_SPACE))
 	{
 		
 			aladdin->Jump();
@@ -193,6 +205,26 @@ void SceneGame::Update(DWORD dt)
 		}
 		else if (dynamic_cast<SharpTrap*>(listObj[i])) {
 			SharpTrap* coin = dynamic_cast<SharpTrap*>(listObj[i]);
+			coin->Update(dt, aladdin->GetX(), aladdin->GetY(), aladdin->GetDirection(), &listObj);
+
+		}
+		else if (dynamic_cast<Floor*>(listObj[i])) {
+			Floor* coin = dynamic_cast<Floor*>(listObj[i]);
+			coin->Update(dt, aladdin);
+
+		}
+		else if (dynamic_cast<Rock*>(listObj[i])) {
+			Rock* coin = dynamic_cast<Rock*>(listObj[i]);
+			coin->Update(dt, aladdin->GetX(), aladdin->GetY(), aladdin->GetDirection(), &listObj);
+
+		}
+		else if (dynamic_cast<Pendulum*>(listObj[i])) {
+			Pendulum* coin = dynamic_cast<Pendulum*>(listObj[i]);
+			coin->Update(dt, aladdin->GetX(), aladdin->GetY(), aladdin->GetDirection(), &listObj);
+
+		}
+		else if (dynamic_cast<Bat*>(listObj[i])) {
+			Bat* coin = dynamic_cast<Bat*>(listObj[i]);
 			coin->Update(dt, aladdin->GetX(), aladdin->GetY(), aladdin->GetDirection(), &listObj);
 
 		}

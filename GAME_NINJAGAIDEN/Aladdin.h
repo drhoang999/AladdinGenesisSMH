@@ -26,6 +26,8 @@
 #define ALADDIN_ANI_WALKING_BEGIN 0
 #define ALADDIN_ANI_WALKING_END 12
 
+#define ALADDIN_ANI_CUT 20
+
 #define ALADDIN_ANI_IDLE 0
 
 #define ALADDIN_UNTOUCHABLE_TIME 1000 
@@ -33,6 +35,9 @@
 class Aladdin : public GameObject
 {
 private:
+
+	CSprite* sprite_cut;
+
 	D3DXVECTOR2 PositionBackup;
 	DWORD untouchable_start;
 	Camera * camera;
@@ -46,6 +51,7 @@ public:
 	bool isFall;
 	bool isJumping;
 	bool isJumDown;
+	bool isCut;
 	
 
 	
@@ -58,6 +64,7 @@ public:
 	void Go(float Vx = ALADDIN_WALKING_SPEED);
 	void Stop();
 	void Jump();
+	void Cut();
 	void JumpDown();
 	void ResetSit();
 	void Right();

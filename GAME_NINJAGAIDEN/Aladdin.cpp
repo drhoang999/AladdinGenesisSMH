@@ -4,7 +4,8 @@ Aladdin::Aladdin(Camera * camera)
 {
 	texture = TextureManager::GetInstance()->GetTexture(eType::ALADDIN);
 	sprite = new CSprite(texture, 100);
-	type = eType::ALADDIN;	
+	sprite_cut = new CSprite(TextureManager::GetInstance()->GetTexture(eType::ALADDIN_CUT), 100);
+	type = eType::ALADDIN;
 	this->camera = camera;	
 	isFall = false;
 	Init();
@@ -46,6 +47,7 @@ void Aladdin::Go(float Vx)
 
 void Aladdin::Jump()
 {
+	
 	if (!isJumping) {
 		backupY = y;
 		isJumDown = false;
@@ -57,11 +59,14 @@ void Aladdin::Jump()
 
 }
 
+void Aladdin::Cut()
+{
+	isCut = true;
+}
+
 void Aladdin::JumpDown()
 {
 	
-
-
 	if (isJumping) {
 		if (y != 0 && backupY - y > 90) {
 			isJumDown = true;
@@ -88,10 +93,12 @@ void Aladdin::JumpDown()
 
 void Aladdin::Stop()
 {
+	SetTexture(TextureManager::GetInstance()->GetTexture(eType::ALADDIN));
 	if (isHurting)
 		return;
 	vx = 0;
 	isWalking = 0;
+	isCut = 0;
 }
 
 void Aladdin::ResetSit()
@@ -155,7 +162,7 @@ void Aladdin::GetBoundingBoxBrick(float & left, float & top, float & right, floa
 
 void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-
+	
 	if (x < camera->GetBoundaryLeft() - 16) {
 		x = camera->GetBoundaryLeft() - 16;
 	
@@ -171,17 +178,25 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	JumpDown();
 		
 	
-	if (isWalking == true) // đang di chuyển
+	
+	if (isCut == true)
+	{
+		
+		SetTexture(TextureManager::GetInstance()->GetTexture(eType::ALADDIN_CUT));
+		sprite_cut->Update(dt);
+	}
+	else if (isWalking == true) // đang di chuyển
 	{
 		if (index < ALADDIN_ANI_WALKING_BEGIN || index >= ALADDIN_ANI_WALKING_END)
 			sprite->SelectFrame(ALADDIN_ANI_WALKING_BEGIN);
 
 		//cập nhật frame mới
 		sprite->Update(dt); // dt này được cập nhật khi gọi update; 
-				
+
 	}
 	else
 	{
+		SetTexture(TextureManager::GetInstance()->GetTexture(eType::ALADDIN));
 		sprite->SelectFrame(ALADDIN_ANI_IDLE);
 
 	}
@@ -211,9 +226,24 @@ void Aladdin::Render(Camera * camera)
 	int alpha = 255;
 
 	if (direction == 1) // hướng phải
-		sprite->Draw(pos.x, pos.y, alpha);
+	{
+		if (isCut) {
+			sprite_cut->Draw(pos.x, pos.y, alpha);
+		}
+		else {
+			sprite->Draw(pos.x, pos.y, alpha);
+		}
+
+	}
 	else
-		sprite->DrawFlipX(pos.x, pos.y, alpha);
+	{
+		if (isCut) {
+			sprite_cut->DrawFlipX(pos.x, pos.y, alpha);
+		} else {
+			sprite->DrawFlipX(pos.x, pos.y, alpha);
+		}
+		
+	}
 
 }
 
