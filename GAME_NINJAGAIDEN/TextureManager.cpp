@@ -26,6 +26,9 @@ void TextureManager::LoadResource()
 
 	AddTexture(eType::ALADDIN, new CTexture("Resources/aladdin/Aladdin.png", 13, 2, 26));
 	AddTexture(eType::ALADDIN_CUT, new CTexture("Resources/aladdin/Aladdin-cut.png", 4, 1, 4));
+	AddTexture(eType::ALADDIN_JUMP, new CTexture("Resources/aladdin/Aladdin-jump.png", 10, 1, 10));
+	//AddTexture(eType::ALADDIN_WAIT, new CTexture("Resources/aladdin/Aladdin-wait1.png", 17, 2, 34));
+
 
 	//map
 	AddTexture(eType::MAP1, new CTexture("Resources/map/TileMap.png", 69, 35, 2415));

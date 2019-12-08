@@ -30,6 +30,9 @@
 
 #define ALADDIN_ANI_IDLE 0
 
+#define ALADDIN_WAITING_TIME 3000 
+
+
 #define ALADDIN_UNTOUCHABLE_TIME 1000 
 #define ALADDIN_ANI_HURTING 16
 class Aladdin : public GameObject
@@ -37,9 +40,14 @@ class Aladdin : public GameObject
 private:
 
 	CSprite* sprite_cut;
+	CSprite* sprite_jump;
+	CSprite* sprite_wait;
+
 
 	D3DXVECTOR2 PositionBackup;
 	DWORD untouchable_start;
+	//DWORD waitTime;
+	//DWORD waitTimeStart;
 	Camera * camera;
 
 	bool isGetNewStage;
@@ -52,6 +60,7 @@ public:
 	bool isJumping;
 	bool isJumDown;
 	bool isCut;
+	//bool isWaiting;
 	
 
 	

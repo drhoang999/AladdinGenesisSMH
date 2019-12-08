@@ -62,6 +62,8 @@ enum eType
 
 	ALADDIN = 1,
 	ALADDIN_CUT = 2,
+	ALADDIN_JUMP = 3,
+	ALADDIN_WAIT = 4,
 	BIRD = 10,
 	COIN = 11,
 	FAT_GUARD = 12,

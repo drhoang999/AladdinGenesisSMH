@@ -5,6 +5,8 @@ Aladdin::Aladdin(Camera * camera)
 	texture = TextureManager::GetInstance()->GetTexture(eType::ALADDIN);
 	sprite = new CSprite(texture, 100);
 	sprite_cut = new CSprite(TextureManager::GetInstance()->GetTexture(eType::ALADDIN_CUT), 100);
+	sprite_jump = new CSprite(TextureManager::GetInstance()->GetTexture(eType::ALADDIN_JUMP), 100);
+	//sprite_wait = new CSprite(TextureManager::GetInstance()->GetTexture(eType::ALADDIN_WAIT), 100);
 	type = eType::ALADDIN;
 	this->camera = camera;	
 	isFall = false;
@@ -37,9 +39,10 @@ void Aladdin::GetBoundingBox(float & left, float & top, float & right, float & b
 
 void Aladdin::Go(float Vx)
 {
-	
+	//waitTime = GetTickCount64();
 		vx = Vx * direction;
 		isWalking = 1;
+		//isWaiting = 0;
 		isHurting = 0;
 		SetPosition(x + direction * 5, y);
 	
@@ -49,6 +52,8 @@ void Aladdin::Jump()
 {
 	
 	if (!isJumping) {
+		//waitTime = GetTickCount64();
+		//isWaiting = false;
 		backupY = y;
 		isJumDown = false;
 		isHurting = 1;
@@ -61,6 +66,7 @@ void Aladdin::Jump()
 
 void Aladdin::Cut()
 {
+	//isWaiting = false;
 	isCut = true;
 }
 
@@ -97,7 +103,11 @@ void Aladdin::Stop()
 	if (isHurting)
 		return;
 	vx = 0;
+	
+	//waitTimeStart = GetTickCount64();
+
 	isWalking = 0;
+	//isWaiting = 1;
 	isCut = 0;
 }
 
@@ -108,13 +118,13 @@ void Aladdin::ResetSit()
 
 void Aladdin::Right()
 {
-	
+	//isWaiting = 0;
 	SetDirection(1);
 }
 
 void Aladdin::Left()
 {
-	
+	//isWaiting = 0;
 	direction = -1;
 }
 
@@ -136,6 +146,8 @@ void Aladdin::SetHurt(int t)
 
 void Aladdin::SetJump()
 {
+
+
 }
 
 void Aladdin::GetBoundingBoxBrick(float & left, float & top, float & right, float & bottom)
@@ -178,12 +190,26 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	JumpDown();
 		
 	
-	
+	/*if (isWaiting == true)
+	{
+		if (waitTimeStart - waitTime > ALADDIN_WAITING_TIME)
+		{
+			SetTexture(TextureManager::GetInstance()->GetTexture(eType::ALADDIN_WAIT));
+			sprite_wait->Update(dt);
+		}
+	}
+	else*/
 	if (isCut == true)
 	{
 		
 		SetTexture(TextureManager::GetInstance()->GetTexture(eType::ALADDIN_CUT));
 		sprite_cut->Update(dt);
+	}
+	if (isJumping == true)
+	{
+
+		SetTexture(TextureManager::GetInstance()->GetTexture(eType::ALADDIN_JUMP));
+		sprite_jump->Update(dt);
 	}
 	else if (isWalking == true) // đang di chuyển
 	{
@@ -222,7 +248,6 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 void Aladdin::Render(Camera * camera)
 {
 	D3DXVECTOR2 pos = camera->Transform(x, y);
-
 	int alpha = 255;
 
 	if (direction == 1) // hướng phải
@@ -233,6 +258,18 @@ void Aladdin::Render(Camera * camera)
 		else {
 			sprite->Draw(pos.x, pos.y, alpha);
 		}
+		if (isJumping) {
+			sprite_jump->Draw(pos.x, pos.y, alpha);
+		}
+		else {
+			sprite->Draw(pos.x, pos.y, alpha);
+		}
+		/*if (isWaiting && waitTimeStart - waitTime > ALADDIN_WAITING_TIME) {
+			sprite_wait->Draw(pos.x, pos.y, alpha);
+		}
+		else {
+			sprite->Draw(pos.x, pos.y, alpha);
+		}*/
 
 	}
 	else
@@ -242,7 +279,18 @@ void Aladdin::Render(Camera * camera)
 		} else {
 			sprite->DrawFlipX(pos.x, pos.y, alpha);
 		}
-		
+		if (isJumping) {
+			sprite_jump->DrawFlipX(pos.x, pos.y, alpha);
+		}
+		else {
+			sprite->DrawFlipX(pos.x, pos.y, alpha);
+		}
+		/*if (isWaiting) {
+			sprite_wait->DrawFlipX(pos.x, pos.y, alpha);
+		}
+		else {
+			sprite->DrawFlipX(pos.x, pos.y, alpha);
+		}*/
 	}
 
 }
@@ -291,7 +339,7 @@ void Aladdin::Reset()
 {
 	direction = 1;
 	isWalking = 0;
-
+	//isWaiting = 1;
 	isHurting = 0;
 
 	vx = 0;
