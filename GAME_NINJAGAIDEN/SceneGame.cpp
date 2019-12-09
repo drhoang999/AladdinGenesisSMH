@@ -4,6 +4,10 @@
 #include "Coin.h"
 #include "FatGuard.h"
 #include "SharpTrap.h"
+#include "Floor.h"
+#include "Rock.h"
+#include "Pendulum.h"
+#include "Bat.h"
 
 SceneGame::SceneGame()
 {
@@ -14,70 +18,96 @@ SceneGame::SceneGame()
 SceneGame::~SceneGame()
 {
 	SAFE_DELETE(TileMap);
-	
+
 }
 
-void SceneGame::KeyState(BYTE * state)
+void SceneGame::KeyState(BYTE* state)
 {
 
-
-
-	if (Game::GetInstance()->IsKeyDown(DIK_RIGHT))
+	if (Game::GetInstance()->IsKeyDown(DIK_C))
 	{
-		if (aladdin->GetDirection() == 1)
-		{
-			aladdin->Right();
-			aladdin->Go();
-		}
-		else if (aladdin->GetDirection() == -1)
-		{
-			aladdin->Right();
-			aladdin->Go(0.09f);
-		}
-		else
-		{
-			aladdin->Right();
-			aladdin->Go();
-		}		
+
+		aladdin->Jump();
+
 	}
 	else
-	{
-		if (Game::GetInstance()->IsKeyDown(DIK_LEFT))
+
+
+		if (Game::GetInstance()->IsKeyDown(DIK_DOWN))
 		{
-			if (aladdin->GetDirection() == -1)
+
+			aladdin->Sit();
+
+			if (Game::GetInstance()->IsKeyDown(DIK_RIGHT))
+				aladdin->SetDirection(1);
+			if (Game::GetInstance()->IsKeyDown(DIK_LEFT))
+				aladdin->SetDirection(-1);
+
+			if (Game::GetInstance()->IsKeyDown(DIK_X))
+				aladdin->Cut();
+
+		}
+		else if (Game::GetInstance()->IsKeyDown(DIK_X))
+		{
+
+			aladdin->Cut();
+
+		}
+		else if (Game::GetInstance()->IsKeyDown(DIK_Z))
+		{
+
+			aladdin->Throw();
+
+		}
+		else
+			if (Game::GetInstance()->IsKeyDown(DIK_RIGHT))
 			{
-				aladdin->Left();
-				aladdin->Go();
-			}
-			else if (aladdin->GetDirection() == 1)
-			{
-				aladdin->Left();
-				aladdin->Go(0.09f);
+				if (aladdin->GetDirection() == 1)
+				{
+					aladdin->Right();
+					aladdin->Go();
+				}
+				else if (aladdin->GetDirection() == -1)
+				{
+					aladdin->Right();
+					aladdin->Go(0.09f);
+				}
+				else
+				{
+					aladdin->Right();
+					aladdin->Go();
+				}
 			}
 			else
 			{
-				aladdin->Left();
-				aladdin->Go();
-			}										
-		}
-		else
-		{
-			aladdin->Stop();														
-		}
+				if (Game::GetInstance()->IsKeyDown(DIK_LEFT))
+				{
+					if (aladdin->GetDirection() == -1)
+					{
+						aladdin->Left();
+						aladdin->Go();
+					}
+					else if (aladdin->GetDirection() == 1)
+					{
+						aladdin->Left();
+						aladdin->Go(0.09f);
+					}
+					else
+					{
+						aladdin->Left();
+						aladdin->Go();
+					}
+				}
+				else
+				{
+					aladdin->Stop();
+				}
 
-	}if (Game::GetInstance()->IsKeyDown(DIK_SPACE))
-	{
-		
-			aladdin->Jump();
-		
-	}
-	
-		
-	
-	
-	
+			}
 
-	
+
+
+
 }
 
 void SceneGame::OnKeyDown(int KeyCode)
@@ -94,7 +124,7 @@ void SceneGame::OnKeyUp(int KeyCode)
 
 void SceneGame::LoadResources()
 {
-	TextureManager * textureManager = TextureManager::GetInstance();
+	TextureManager* textureManager = TextureManager::GetInstance();
 
 
 	gameTime = new GameTime();
@@ -111,7 +141,7 @@ void SceneGame::LoadResources()
 void SceneGame::InitGame(eType map)
 {
 	LoadMap(map);
-	
+
 
 	gameTime->SetTime(0); // đếm lại từ 0
 
@@ -136,7 +166,7 @@ void SceneGame::ResetResource()
 
 void SceneGame::Update(DWORD dt)
 {
-	
+
 	if (isGameOver)
 		return;
 
@@ -148,16 +178,16 @@ void SceneGame::Update(DWORD dt)
 	for (UINT i = 0; i < listUnit.size(); i++)
 	{
 		LPGAMEOBJECT obj = listUnit[i]->GetObj();
-		listObj.push_back(obj);		
+		listObj.push_back(obj);
 	}
-	
+
 
 	aladdin->Update(dt, &listObj);
-	
-	
+
+
 	if (camera->AllowFollowAladdin())
-	 	camera->SetPosition(aladdin->GetX() - SCREEN_WIDTH / 2 , aladdin->GetY()-SCREEN_HEIGHT/2); // gắn tọa độ nhân vật vào camera
-	
+		camera->SetPosition(aladdin->GetX() - SCREEN_WIDTH / 2, aladdin->GetY() - SCREEN_HEIGHT / 2); // gắn tọa độ nhân vật vào camera
+
 
 	camera->Update(dt);
 
@@ -165,21 +195,21 @@ void SceneGame::Update(DWORD dt)
 
 
 	DWORD now = GetTickCount();
-	
+
 	//DebugOut(L"now = %d \ttimeBegin = %d\n", now, timeBeginFreeze);
 
 
 	for (UINT i = 0; i < listObj.size(); i++)
 	{
 
-		
+
 		LPGAMEOBJECT obj = listObj[i];
 		if (dynamic_cast<Bird*>(listObj[i]))
 		{
 			Bird* bird = dynamic_cast<Bird*>(listObj[i]);
 			bird->Update(dt, aladdin->GetX(), aladdin->GetY(), aladdin->GetDirection(), &listObj);
-		
-		
+
+
 		}
 		else if (dynamic_cast<Coin*>(listObj[i])) {
 			Coin* coin = dynamic_cast<Coin*>(listObj[i]);
@@ -196,6 +226,26 @@ void SceneGame::Update(DWORD dt)
 			coin->Update(dt, aladdin->GetX(), aladdin->GetY(), aladdin->GetDirection(), &listObj);
 
 		}
+		else if (dynamic_cast<Floor*>(listObj[i])) {
+			Floor* coin = dynamic_cast<Floor*>(listObj[i]);
+			coin->Update(dt, aladdin);
+
+		}
+		else if (dynamic_cast<Rock*>(listObj[i])) {
+			Rock* coin = dynamic_cast<Rock*>(listObj[i]);
+			coin->Update(dt, aladdin->GetX(), aladdin->GetY(), aladdin->GetDirection(), &listObj);
+
+		}
+		else if (dynamic_cast<Pendulum*>(listObj[i])) {
+			Pendulum* coin = dynamic_cast<Pendulum*>(listObj[i]);
+			coin->Update(dt, aladdin->GetX(), aladdin->GetY(), aladdin->GetDirection(), &listObj);
+
+		}
+		else if (dynamic_cast<Bat*>(listObj[i])) {
+			Bat* coin = dynamic_cast<Bat*>(listObj[i]);
+			coin->Update(dt, aladdin->GetX(), aladdin->GetY(), aladdin->GetDirection(), &listObj);
+
+		}
 		else
 			obj->Update(dt, &listObj);
 	}
@@ -203,19 +253,19 @@ void SceneGame::Update(DWORD dt)
 	UpdateGrid();
 	SetInactiveEnemy();
 	CheckCollision(dt);
-		
-		
 
-	
+
+
+
 
 }
 void SceneGame::CheckDropItem()
 {
-	
+
 }
 void SceneGame::SetInactiveEnemy()
 {
-	
+
 }
 void SceneGame::UpdateGrid()
 {
@@ -243,7 +293,7 @@ void SceneGame::Render()
 			listObj[i]->Render(camera);
 		}
 
-		
+
 		if (!aladdin->isFall)
 			aladdin->Render(camera);
 
@@ -269,7 +319,7 @@ void SceneGame::Render()
 	}
 	else
 	{
-		
+
 		if (GetTickCount() - EndTime < 4000)
 		{
 			switch (count++)
@@ -284,7 +334,7 @@ void SceneGame::Render()
 				TileMap->DrawMap(camera, 255, 125, 34);
 				break;
 			case 4:
-				count = 1;			
+				count = 1;
 				TileMap->DrawMap(camera, 255, 255, 255);
 				break;
 			default:
@@ -297,10 +347,10 @@ void SceneGame::Render()
 			}
 
 
-			
+
 			aladdin->Render(camera);
 
-	
+
 		}
 		else
 		{
@@ -328,20 +378,20 @@ void SceneGame::LoadMap(eType x)
 		grid->SetFile("Resources/map/readObjectMap1.txt");
 		TileMap->LoadMap(eType::MAP1);
 
-		
+
 		camera->SetAllowFollowAladdin(true);
 
-		camera->SetBoundary(0.0f, (float)(TileMap->GetMapWidth() - camera->GetWidth()),0.0f,(float)(TileMap->GetMapHeight())-camera->GetHeight()+30); // set biên camera dựa vào kích thước map		
+		camera->SetBoundary(0.0f, (float)(TileMap->GetMapWidth() - camera->GetWidth()), 0.0f, (float)(TileMap->GetMapHeight()) - camera->GetHeight() + 30); // set biên camera dựa vào kích thước map		
 
 		camera->SetPosition(0, 0);
 
 
 		camera->SetAllowFollowAladdin(true);
 
-		
+
 		aladdin->SetPosition(ALADDIN_POSITION_DEFAULT);
 		StateCurrent = 1;
-		break;	
+		break;
 	}
 
 	ResetResource();
@@ -360,10 +410,10 @@ void SceneGame::CheckCollisonOfAladdin(DWORD dt)
 
 void SceneGame::CollisionWithItems(DWORD dt)
 {
-	
+
 }
 void SceneGame::ReplayMusicGame(int map)
-{	
+{
 
 }
 

@@ -34,7 +34,7 @@ void SharpTrap::Update(DWORD dt, float xAladdin, float yAladdin, int dAladdin, v
 {
 
 	int index = sprite->GetCurrentFrame();
-
+	DebugOut(L"\nDIRECTION = %d\n", index);
 	if (index == 0 || index == 1 || index == 2) {
 		outing = false;
 	}
@@ -52,7 +52,7 @@ void SharpTrap::Render(Camera* camera)
 
 	D3DXVECTOR2 pos = camera->Transform(x, y);
 	if (direction == 1)
-		sprite->Draw(pos.x, pos.y);
+		sprite->Draw(pos.x + 100, pos.y + 100);
 	else
 		sprite->DrawFlipX(pos.x, pos.y);
 

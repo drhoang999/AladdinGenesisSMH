@@ -110,7 +110,7 @@ void Bird::Update(DWORD dt, float xAladdin, float yAladdin, int dAladdin, vector
 	}
 	else // bay ngang
 	{
-		DebugOut(L"\nDIRECTION = %d\n", int(direction));
+		//DebugOut(L"\nDIRECTION = %d\n", int(direction));
 		vy = 0;
 		delta = abs(xAladdin - xStart) + 200;
 		if (abs(x - xStart) > delta)
@@ -132,7 +132,7 @@ void Bird::Update(DWORD dt, float xAladdin, float yAladdin, int dAladdin, vector
 	sprite->Update(dt); // update frame ani
 }
 
-void Bird::Render(Camera * camera)
+void Bird::Render(Camera* camera)
 {
 	if (this->status == INACTIVE)
 	{
@@ -145,10 +145,10 @@ void Bird::Render(Camera * camera)
 		sprite->DrawFlipX(pos.x, pos.y);
 
 
-	
+
 }
 
-void Bird::GetActiveBoundingBox(float &left, float &top, float &right, float &bottom, int id)
+void Bird::GetActiveBoundingBox(float& left, float& top, float& right, float& bottom, int id)
 {
 	if (id == -1 && this->id != 262) //id 262 không có bên trái
 	{
@@ -166,7 +166,7 @@ void Bird::GetActiveBoundingBox(float &left, float &top, float &right, float &bo
 	}
 }
 
-void Bird::GetBoundingBox(float & left, float & top, float & right, float & bottom)
+void Bird::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
 	left = x + 15;
 	top = y - 1;
@@ -174,7 +174,7 @@ void Bird::GetBoundingBox(float & left, float & top, float & right, float & bott
 	bottom = y + 40;
 }
 
-void Bird::RenderActiveBoundingBox(Camera * camera)
+void Bird::RenderActiveBoundingBox(Camera* camera)
 {
 	float l, t, r, b;
 	GetActiveBoundingBox(l, t, r, b, -1);

@@ -9,12 +9,13 @@ private:
 	LPD3DXSPRITE spriteHandler; //lấy device và vẽ sprite lên màn hình.
 	int currentFrame;  //frame hiện tại
 	int totalFrames; //tổng số frame của animation
+	bool countDown; //đếm ngượcs
 
 public:
 	CSprite(CTexture* Texture, DWORD TimeAnimation);
 	virtual ~CSprite();
 
-	CTexture * texture;
+	CTexture* texture;
 
 	DWORD timeAccumulated;	 // thời gian chờ đã tích lũy
 	DWORD timeAnimation; // thời gian phải chờ giữa các frame

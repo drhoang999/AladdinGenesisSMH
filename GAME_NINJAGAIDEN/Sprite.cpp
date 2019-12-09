@@ -3,8 +3,8 @@
 RECT CSprite::GetRectFrame(int idFrame)
 {
 	RECT res;
-	res.left = (idFrame % texture->GetColumn())* texture->GetFrameWidth();
-	res.top = (idFrame / texture->GetColumn())* texture->GetFrameHeight();
+	res.left = (idFrame % texture->GetColumn()) * texture->GetFrameWidth();
+	res.top = (idFrame / texture->GetColumn()) * texture->GetFrameHeight();
 	res.right = res.left + texture->GetFrameWidth();
 	res.bottom = res.top + texture->GetFrameHeight();
 	return res;
@@ -13,10 +13,13 @@ RECT CSprite::GetRectFrame(int idFrame)
 CSprite::CSprite(CTexture* Texture, DWORD TimeAnimation)
 {
 	texture = Texture;
+
 	currentFrame = 0;
 	totalFrames = texture->TotalFrames - 1;
 	this->timeAnimation = TimeAnimation;
 	spriteHandler = Game::GetInstance()->GetSpriteHandler();
+
+
 }
 
 CSprite::~CSprite()
@@ -26,9 +29,26 @@ CSprite::~CSprite()
 
 void CSprite::Next()
 {
+
+	if (currentFrame == totalFrames)
+	{
+		countDown = true;
+	}
+
+	if (currentFrame == 0)
+		countDown = false;
+
+	if (countDown)
+	{
+		currentFrame--;
+		return;
+	}
+
 	currentFrame++;
-	if (currentFrame > totalFrames)
-		currentFrame = 0;
+
+
+
+
 }
 
 void CSprite::ResetTime()
