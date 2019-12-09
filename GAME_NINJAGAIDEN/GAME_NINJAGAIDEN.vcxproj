@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aladdin.h" />
+    <ClInclude Include="Bat.h" />
     <ClInclude Include="Bird.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Coin.h" />
@@ -27,11 +28,14 @@
     <ClInclude Include="Define.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FatGuard.h" />
+    <ClInclude Include="Floor.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameTime.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Pendulum.h" />
+    <ClInclude Include="Rock.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneGame.h" />
     <ClInclude Include="SceneManager.h" />
@@ -42,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Aladdin.cpp" />
+    <ClCompile Include="Bat.cpp" />
     <ClCompile Include="Bird.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Coin.cpp" />
@@ -49,12 +54,15 @@
     <ClCompile Include="Define.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FatGuard.cpp" />
+    <ClCompile Include="Floor.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Gamemain.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameTime.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Pendulum.cpp" />
+    <ClCompile Include="Rock.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneGame.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -62,6 +70,9 @@
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Resources\Enemy\hd.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{005234ED-B9D8-4926-B974-680BD64B8377}</ProjectGuid>

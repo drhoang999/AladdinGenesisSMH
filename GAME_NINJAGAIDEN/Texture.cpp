@@ -1,9 +1,5 @@
 #include "Texture.h"
 
-
-
-
-
 int CTexture::GetFrameWidth()
 {
 	return frameWidth;

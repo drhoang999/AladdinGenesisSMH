@@ -5,6 +5,10 @@
 #include "Camera.h"
 #include "FatGuard.h"
 #include "SharpTrap.h"
+#include "Floor.h"
+#include "Rock.h"
+#include "Pendulum.h"
+#include "Bat.h"
 Unit::Unit(Grid * grid, LPGAMEOBJECT obj, float x, float y)
 {
 	this->grid = grid;
@@ -76,14 +80,22 @@ GameObject * Grid::GetNewObject(int id, int direction, int type, float x, float 
 	switch (type)
 	{
 	case eType::BIRD:
-		return new Bird(direction,x, y, st);	
+		return new Bird(direction, x, y, st);
 	case eType::COIN:
 		return new Coin(direction, x, y, st);
 	case eType::FAT_GUARD:
 		return new FatGuard(direction, x, y, st);
 	case eType::SHARP_TRAP:
 		return new SharpTrap(direction, x, y, st);
-	}
+	case eType::FLOOR:
+		return new Floor(direction, x, y, st);
+	case eType::ROCK:
+		return new Rock(direction, x, y, st);
+	case eType::PENDULUM:
+		return new Pendulum(direction, x, y, st);
+	case eType::BAT:
+		return new Bat(direction, x, y, st);
+}
 	return NULL;
 }
 

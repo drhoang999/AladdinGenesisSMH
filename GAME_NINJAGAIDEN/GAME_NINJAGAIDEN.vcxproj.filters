@@ -114,6 +114,18 @@
     <ClCompile Include="SharpTrap.cpp">
       <Filter>GameObject\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="Floor.cpp">
+      <Filter>GameObject\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Rock.cpp">
+      <Filter>GameObject\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Pendulum.cpp">
+      <Filter>GameObject\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat.cpp">
+      <Filter>GameObject\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debug.h">
@@ -176,5 +188,20 @@
     <ClInclude Include="SharpTrap.h">
       <Filter>GameObject\Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="Floor.h">
+      <Filter>GameObject\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Rock.h">
+      <Filter>GameObject\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Pendulum.h">
+      <Filter>GameObject\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat.h">
+      <Filter>GameObject\Enemy</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Resources\Enemy\hd.txt" />
   </ItemGroup>
 </Project>

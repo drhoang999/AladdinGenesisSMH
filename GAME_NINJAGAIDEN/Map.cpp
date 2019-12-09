@@ -18,7 +18,7 @@ void Map::LoadMap(eType type)
 	switch (type)
 	{
 	case eType::MAP1:
-		ReadMapTXT("Resources/map/Background_map_1.txt");
+		ReadMapTXT("Resources/map/readFileMap.txt");
 		break;
 		
 	}
