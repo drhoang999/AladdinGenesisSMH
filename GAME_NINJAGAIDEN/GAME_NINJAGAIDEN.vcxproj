@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aladdin.h" />
+    <ClInclude Include="AladdinHead.h" />
     <ClInclude Include="Bat.h" />
     <ClInclude Include="Bird.h" />
     <ClInclude Include="Camera.h" />
@@ -29,6 +30,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FatGuard.h" />
     <ClInclude Include="Floor.h" />
+    <ClInclude Include="FontNumber.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameTime.h" />
@@ -46,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Aladdin.cpp" />
+    <ClCompile Include="AladdinHead.cpp" />
     <ClCompile Include="Bat.cpp" />
     <ClCompile Include="Bird.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -55,6 +58,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FatGuard.cpp" />
     <ClCompile Include="Floor.cpp" />
+    <ClCompile Include="FontNumber.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Gamemain.cpp" />
     <ClCompile Include="GameObject.cpp" />

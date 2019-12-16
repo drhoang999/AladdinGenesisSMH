@@ -26,6 +26,12 @@ void TextureManager::LoadResource()
 
 	AddTexture(eType::ALADDIN, new CTexture("Resources/aladdin/aladdin_full.png", 16, 11, 176));
 	AddTexture(eType::ALADDIN_CUT, new CTexture("Resources/aladdin/aladdin_full.png", 16, 11, 176));
+	AddTexture(eType::ALADDIN_HEAD, new CTexture("Resources/aladdin-head.png", 2, 1, 2));
+
+
+	//font
+	AddTexture(eType::FONTNUMBER, new CTexture("Resources/fontNumber.png", 10, 1, 10));
+
 
 	//map
 	AddTexture(eType::MAP1, new CTexture("Resources/map/TileMap.png", 69, 35, 2415));

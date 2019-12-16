@@ -49,6 +49,9 @@
     <Filter Include="GameObject\Enemy\Score">
       <UniqueIdentifier>{6bf4b913-29dc-4d8a-a7e0-361bdbd1f3d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Detail">
+      <UniqueIdentifier>{3fb0d9a8-06ae-4db1-a71e-2a8fe3538a0d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug.cpp">
@@ -126,6 +129,12 @@
     <ClCompile Include="Bat.cpp">
       <Filter>GameObject\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="FontNumber.cpp">
+      <Filter>FrameWork\Detail</Filter>
+    </ClCompile>
+    <ClCompile Include="AladdinHead.cpp">
+      <Filter>Aladdin</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debug.h">
@@ -199,6 +208,12 @@
     </ClInclude>
     <ClInclude Include="Bat.h">
       <Filter>GameObject\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="FontNumber.h">
+      <Filter>FrameWork\Detail</Filter>
+    </ClInclude>
+    <ClInclude Include="AladdinHead.h">
+      <Filter>Aladdin</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

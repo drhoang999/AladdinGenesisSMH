@@ -5,6 +5,7 @@ Aladdin::Aladdin(Camera* camera)
 	texture = TextureManager::GetInstance()->GetTexture(eType::ALADDIN);
 	sprite = new CSprite(texture, 150);
 	type = eType::ALADDIN;
+	life = 3;
 	this->camera = camera;
 	isFall = false;
 	Init();
@@ -13,6 +14,11 @@ Aladdin::Aladdin(Camera* camera)
 Aladdin::~Aladdin()
 {
 
+}
+
+int Aladdin::getLife()
+{
+	return life;
 }
 
 void Aladdin::GetBoundingBox(float& left, float& top, float& right, float& bottom)
@@ -386,6 +392,7 @@ void Aladdin::Init()
 
 void Aladdin::Reset()
 {
+	//lifeLeft->Draw(400, 400);
 	direction = 1;
 	isWalking = 0;
 

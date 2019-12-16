@@ -1,6 +1,11 @@
 ﻿#ifndef __ALADDIN_H__
 #define __ALADDIN_H__
+
+#include "AladdinHead.h"
+
+
 #include "GameObject.h"
+
 #include "debug.h"
 #include "Enemy.h"
 #include "Bird.h"
@@ -61,6 +66,10 @@ private:
 	DWORD untouchable_start;
 	Camera* camera;
 
+	//AladdinHead* lifeLeft;
+
+	int life;
+
 	bool isGetNewStage;
 
 	bool untouchable;
@@ -81,6 +90,9 @@ public:
 public:
 	Aladdin(Camera* camera);
 	~Aladdin();
+
+
+	int getLife();
 
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
 	virtual void GetBoundingBoxBrick(float& left, float& top, float& right, float& bottom);

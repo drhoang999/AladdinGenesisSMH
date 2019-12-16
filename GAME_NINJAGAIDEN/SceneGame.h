@@ -6,6 +6,7 @@
 #include "Sprite.h"
 //#include "Ninja.h" 
 #include "Aladdin.h"
+#include "AladdinHead.h"
 #include "Camera.h"
 #include "Map.h"
 #include "GameTime.h"
@@ -29,6 +30,7 @@ private:
 	Map * TileMap;
 	Camera *camera;
 	Aladdin * aladdin;
+	AladdinHead* aladdin_head;
 
 	vector<LPGAMEOBJECT> listObj;
 	vector<Unit*> listUnit;

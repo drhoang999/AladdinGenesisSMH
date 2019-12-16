@@ -72,6 +72,9 @@ enum eType
 	ROCK = 15,
 	PENDULUM = 16,
 	BAT = 17,
+	ALADDIN_HEAD = 602,
+	FONT = 601,
+	FONTNUMBER = 600,
 
 	//map
 	MAP1 = 100,
