@@ -9,12 +9,18 @@ string AladdinHead::FillNumber(string s, UINT MaxNumber)
 }
 
 
-
-AladdinHead::AladdinHead(int setLife)
+AladdinHead::AladdinHead()
 {
-	life = setLife;
+	_text = new FontNumber();
 	_texture = TextureManager::GetInstance()->GetTexture(eType::ALADDIN_HEAD);
 	_sprite = new CSprite(_texture, 0);
+}
+
+
+
+void AladdinHead::setAladdinHead(int setLife)
+{
+	life = setLife;
 }
 
 
@@ -26,5 +32,6 @@ AladdinHead::~AladdinHead()
 void AladdinHead::Draw(float x, float y)
 {	
 	_sprite->Draw(x + 0 * _texture->GetFrameWidth(), y);
-	//_text->Draw(x+200, y, FillNumber(std::to_string(life), 6));
+	
+	_text->Draw(x + _texture->GetFrameWidth()+10, y, FillNumber(std::to_string(life), 6));
 }

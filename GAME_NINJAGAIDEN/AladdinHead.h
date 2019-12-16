@@ -20,8 +20,8 @@ private:
 	FontNumber* _text;
 
 public:
-	//AladdinHead();
-	AladdinHead(int setLife);
+	AladdinHead();
+	void setAladdinHead(int setLife);
 	~AladdinHead();
 	void Draw(float x, float y);
 };

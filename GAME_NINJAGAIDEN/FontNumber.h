@@ -1,5 +1,4 @@
-#ifndef __FONT_H__
-#define __FONT_H__
+#pragma once
 
 #include "Sprite.h"
 #include "Texture.h"
@@ -23,7 +22,7 @@ public:
 
 
 
-#endif 
+ 
 
 
 

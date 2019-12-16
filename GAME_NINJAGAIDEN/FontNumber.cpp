@@ -16,15 +16,14 @@ FontNumber::~FontNumber()
 
 void FontNumber::Draw(float x, float y, const string& s)
 {
-	int num = 0;
+
 	for (UINT i = 0; i < s.size(); i++)
 	{
 		if (s[i] == ' ')
 			continue;
 		if (s[i] >= '0' && s[i] <= '9')
 		{
-			num = (int) s[i];
-			_sprite->SelectFrame(num -48);
+			_sprite->SelectFrame(s[i]);
 		}
 
 		_sprite->Draw(x + i * _texture->GetFrameWidth(), y);

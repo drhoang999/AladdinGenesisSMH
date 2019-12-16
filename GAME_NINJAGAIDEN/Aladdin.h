@@ -1,7 +1,7 @@
 ﻿#ifndef __ALADDIN_H__
 #define __ALADDIN_H__
 
-#include "AladdinHead.h"
+//#include "AladdinHead.h"
 
 
 #include "GameObject.h"

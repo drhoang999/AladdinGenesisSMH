@@ -132,7 +132,8 @@ void SceneGame::LoadResources()
 
 	camera = new Camera(SCREEN_WIDTH, SCREEN_HEIGHT);
 	aladdin = new Aladdin(camera);
-	aladdin_head = new AladdinHead(aladdin->getLife());
+	aladdin_head = new AladdinHead();
+	aladdin_head->setAladdinHead(aladdin->getLife());
 	grid = new Grid(2272, 1120);
 
 
@@ -144,6 +145,7 @@ void SceneGame::InitGame(eType map)
 	LoadMap(map);
 
 	gameTime->SetTime(0); // đếm lại từ 0
+	aladdin_head->setAladdinHead(aladdin->getLife());
 
 	aladdin_head->Draw(10, 10);
 
@@ -158,6 +160,9 @@ void SceneGame::ResetResource()
 	listObj.clear();
 	listUnit.clear();
 	camera->SetAllowFollowAladdin(true);
+
+	aladdin_head->setAladdinHead(aladdin->getLife());
+
 	aladdin_head->Draw(10, 10);
 
 	isGameOver = false;
@@ -196,6 +201,8 @@ void SceneGame::Update(DWORD dt)
 	camera->Update(dt);
 
 	gameTime->Update(dt);
+
+	aladdin_head->setAladdinHead(aladdin->getLife());
 
 	aladdin_head->Draw(10, 10);
 
@@ -292,6 +299,9 @@ void SceneGame::Render()
 	if (!isGameOver)
 	{
 		TileMap->DrawMap(camera, 255, 255, 255);
+
+		aladdin_head->setAladdinHead(aladdin->getLife());
+
 		aladdin_head->Draw(10, 10);
 
 
